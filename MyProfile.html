@@ -375,13 +375,13 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-12">
           <h2 class="text-4xl font-bold text-center mb-16">Recent Projects</h2>
           <div class="relative mx-[40px] sm:mx-[80px]">
-            <div class="flex overflow-hidden w-full">
+            <div class="flex overflow-x-hidden w-full">
               <div
                 class="flex transition-transform duration-500 ease-in-out w-full"
                 id="slideContainer"
               >
-                <div class="w-full flex-shrink-0 px-4 sm:px-0 min-w-full">
-                  <div
+              <div class="w-full flex-shrink-0 px-2 sm:px-4 min-w-full">
+                <div
                     class="bg-gray-50 rounded-lg p-4 sm:p-8 shadow-lg max-w-3xl mx-auto w-full"
                   >
                     <div
@@ -707,11 +707,10 @@
             const totalSlides = 5;
             let autoSlideInterval;
             function updateSlide() {
-              if (window.innerWidth < 640) {
-                slideContainer.style.transform = `translateY(-${currentSlide * 100}%)`;
-              } else {
-                slideContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
-              }
+              const slideWidth = slideContainer.children[0].offsetWidth; // Get the width of one slide
+              slideContainer.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+
+              // Update indicator colors
               Array.from(indicators).forEach((indicator, index) => {
                 indicator.classList.toggle("bg-primary", index === currentSlide);
                 indicator.classList.toggle("bg-gray-300", index !== currentSlide);
@@ -760,10 +759,7 @@
           <h2 class="text-4xl font-bold text-center mb-16">Certificates</h2>
           <div class="relative max-w-5xl mx-auto w-full">
             <div class="overflow-hidden w-full">
-              <div
-                class="flex flex-col sm:flex-row transition-transform duration-500 ease-in-out"
-                id="certificateSlides"
-              >
+              <div class="flex flex-row transition-transform duration-500 ease-in-out w-full min-h-[500px]" id="certificateSlides">
                 <!-- Slide 1 -->
                 <div class="w-full flex-shrink-0">
                   <div class="grid grid-cols-1 gap-4 md:gap-6">
@@ -921,16 +917,16 @@
             const totalSlides = 2;
             let autoSlideInterval;
             function updateSlide() {
-              if (window.innerWidth < 640) {
-                slideContainer.style.transform = `translateY(-${currentSlide * 100}%)`;
-              } else {
-                slideContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
-              }
+              const slideWidth = slideContainer.children[0].offsetWidth; // Get the width of one slide
+              slideContainer.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+
+              // Update indicator colors
               Array.from(indicators).forEach((indicator, index) => {
                 indicator.classList.toggle("bg-primary", index === currentSlide);
                 indicator.classList.toggle("bg-gray-300", index !== currentSlide);
               });
             }
+
             window.addEventListener("resize", updateSlide);
             function startAutoSlide() {
               autoSlideInterval = setInterval(() => {
