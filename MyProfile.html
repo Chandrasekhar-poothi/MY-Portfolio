@@ -1043,7 +1043,9 @@
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
             <div class="space-y-8">
               <div class="flex items-center space-x-4">
-                <div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10">
+                <div
+                  class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10"
+                >
                   <i class="ri-mail-line text-primary text-xl"></i>
                 </div>
                 <div>
@@ -1052,25 +1054,39 @@
                 </div>
               </div>
               <div class="flex items-center space-x-4 mt-4">
-                <div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10">
+                <div
+                  class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10"
+                >
                   <i class="ri-github-line text-primary text-xl"></i>
                 </div>
                 <div>
                   <h3 class="font-medium">GitHub</h3>
-                  <a href="https://github.com/Chandrasekhar-poothi" class="text-gray-600 hover:text-primary">Chandrasekhar-poothi</a>
+                  <a
+                    href="https://github.com/Chandrasekhar-poothi"
+                    class="text-gray-600 hover:text-primary"
+                    >Chandrasekhar-poothi</a
+                  >
                 </div>
               </div>
               <div class="flex items-center space-x-4 mt-4">
-                <div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10">
+                <div
+                  class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10"
+                >
                   <i class="ri-linkedin-line text-primary text-xl"></i>
                 </div>
                 <div>
                   <h3 class="font-medium">LinkedIn</h3>
-                  <a href="https://www.linkedin.com/in/chandrasekhar-reddy-122494226/" class="text-gray-600 hover:text-primary">Chandra sekhar</a>
+                  <a
+                    href="https://www.linkedin.com/in/chandrasekhar-reddy-122494226/"
+                    class="text-gray-600 hover:text-primary"
+                    >Chandra sekhar</a
+                  >
                 </div>
               </div>
               <div class="flex items-center space-x-4">
-                <div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10">
+                <div
+                  class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10"
+                >
                   <i class="ri-phone-line text-primary text-xl"></i>
                 </div>
                 <div>
@@ -1079,7 +1095,9 @@
                 </div>
               </div>
               <div class="flex items-center space-x-4">
-                <div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10">
+                <div
+                  class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10"
+                >
                   <i class="ri-map-pin-line text-primary text-xl"></i>
                 </div>
                 <div>
@@ -1088,29 +1106,42 @@
                 </div>
               </div>
             </div>
-            
-            <!-- Form with Formspree Integration -->
-            <form id="contactForm" action="https://formspree.io/f/xnnjleoz" method="POST" class="space-y-6">
+            <form id="contactForm">
               <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">Name</label>
-                <input type="text" name="name" class="w-full px-4 py-3 rounded-lg border-gray-200 focus:border-primary focus:ring-primary" required />
+                <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Name</label>
+                <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded-lg border-gray-200 focus:border-primary focus:ring-primary" required />
               </div>
               <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                <input type="email" name="email" class="w-full px-4 py-3 rounded-lg border-gray-200 focus:border-primary focus:ring-primary" required />
+                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-lg border-gray-200 focus:border-primary focus:ring-primary" required />
               </div>
               <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
-                <textarea name="message" rows="4" class="w-full px-4 py-3 rounded-lg border-gray-200 focus:border-primary focus:ring-primary" required></textarea>
+                <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 rounded-lg border-gray-200 focus:border-primary focus:ring-primary" required></textarea>
               </div>
-              <button type="submit" class="w-full bg-primary text-white px-6 py-3 rounded-button hover:bg-primary/90 transition">
+              <button type="button" onclick="sendEmail()" class="w-full bg-primary text-white px-6 py-3 rounded-button hover:bg-primary/90 transition">
                 Send Message
               </button>
-            </form>
+            </form>            
           </div>
         </div>
+        <script>
+          function sendEmail() {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var message = document.getElementById("message").value;
+          
+            var subject = "New Contact Form Submission from " + name;
+            var body = `Name: ${name}\nEmail: ${email}\nMessage: ${message}`;
+          
+            window.location.href = "mailto:chandrasekhar.p2004@gmail.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+
+            setTimeout(function () {
+              document.getElementById("contactForm").reset();
+            }, 1000);
+          }
+          </script>
       </section>
-  
     </main>
     <footer class="bg-gray-900 text-white py-12">
       <div class="container mx-auto px-4 sm:px-6 lg:px-12">
